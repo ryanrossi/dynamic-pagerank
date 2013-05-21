@@ -1,0 +1,81 @@
+---
+title: "A Dynamical System for PageRank with Time-Dependent Teleportation"
+layout: project
+---
+
+A Dynamical System for PageRank with Time-Dependent Teleportation
+==================================
+
+### David F. Gleich
+### Ryan A. Rossi
+
+_These codes are research prototypes and may not work for you. No promises. But do email if you run into problems._
+
+
+Download
+--------
+
+* [dynamic-pr.tar.gz](dynamic-pr.tar.gz) 
+* [dynamic-pr-data.tar.gz](dynamic-pr-data.tar.gz) ___unzip into dynamic_pagerank directory___
+{: .nobullets}
+
+
+
+
+Setup
+-----
+
+Start matlab in the directory where you unzipped the dynamic_pr.tar.gz file
+
+    $ matlab
+    >> setup_paths
+	>> load('data/wiki-24hours');
+
+This should work on Mac OSX (Lion tested) and Ubuntu linux (10.10 tested) with 
+Matlab R2011a.
+
+    >> v = normcols(v);
+    >> X = dynamic_pagerank(A,v);
+
+See examples.m for additional examples
+
+Please let us know if you run into any issues.
+ 
+Overview
+--------
+
+The package is organized by directory
+
+`/`  
+: All of the main matlab codes (dynamic_pagerank.m,...)
+
+`ranking`
+: dynamic ranking codes and figures
+
+`forecasting`
+: simple models for prediction using Dynamic PageRank
+
+`clustering`
+: experimental codes for identifying trends and similar vertices
+
+`causality`
+: codes for computing Granger causality between vertices
+
+`data`
+: graphs, precomputed data, and script files for extracting and parsing page views
+
+`web`
+: this information and all the figures
+
+Figures
+-----------
+    
+|Experiment|Description|Figure|
+|:------------------|:------------------------------------|:------------------|
+|`fluctuating_interest.m` | PageRank dynamical system analytical solution  | Fig. 2 |
+|`plot_vertex_yxlims.m` | PageRank dynamical system analytical solution  | Fig. 3 |
+|`ranking/compute_isim.m` | The intersection similarity plot | Fig. 5 |
+|`dpr_timeseries.m` | Dynamic PageRank time-series plot | Fig. 6-7 |
+|`forecasting/print_preds_table.m` | Performance of Dynamic PageRank for prediction | Tab. 3 |
+|`clustering/dpr_clustering.m` | Cluster dynamic score trends, vertices w/ similar behavior | Fig. 8 |
+|`causality/prt_causality.m` | Granger causality between vertices | Tab. 4 |

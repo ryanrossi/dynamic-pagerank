@@ -1,0 +1,148 @@
+Overall design of PRPACK
+========================
+
+Here are the PageRank variations we plan to investigate.
+
+* PageRank with u = v = uniform (Version 0.1)
+* Weighted PageRank with u = v = uniform (Version 0.2)
+* PageRank with u = v = provided (Version 0.5)
+* Weighted PageRank with u = v = provided (Version 0.5)
+* PageRank with u = uniform, v = provided  (Version 1.0)
+* PageRank with u = provided, v = provided (Version 1.0)
+* Weighted PageRank with u = uniform, v = provided  (Version 1.0)
+* Weighted PageRank with u = provided, v = provided (Version 1.0)
+* PageRank with u = v = "sparse" (Version 2.0)
+* Weighted PageRank with u = v = "sparse" (Version 2.0)
+
+We want to make PRPACK as easy to use as possible.  For that purpose,
+we want to have a C++ library and generate libraries for:
+
+* Matlab
+* Python
+* R
+
+These will initially be part of the PRPACK distribution, but may
+become their own forks eventually.
+
+Ideas
+-----
+
+* Multicore pagerank via an asynchronous dynamic residual iteration
+(This is the PageRank "push" algorithm applied in an asynchronous
+means ala McSherry.)
+
+* Sparse PageRank via a dynamic residual with queue that "defers"
+to a multi-core PageRank once that's faster.
+
+* Code for the cases with u = v, u \not= v, and u, v uniform, by
+using a Schur complement like approach (or equivalently, a 
+censored Markov chain-like approach).
+
+* A Delta-coded adjacency structure to reduce traffic to-from
+main memory (need performance testing on this).
+
+References datasets
+-------------------
+
+We plan to use the following graphs to evaluate the performance
+of the code:
+
+### Big
+enwiki-20090302 - 6.8M verts 80M edges
+ljournal-2008 - 5.3M verts 79M edges
+cit-Patents - 3.7M verts 16M edges
+
+### Medium
+
+### Small (compare to LU/Atlas)
+power.smat - 4.9k verts 13k edges
+jazz.smat - 198 verts 5.4k edges
+
+
+
+C++ package
+-----------
+
+Inputs:
+
+* List of edges  (Generic)
+* CSR for out-edges  (C codes)
+* CSR for in-edges  (Matlab)
+
+Graph classes:
+
+prpack_uint32_csr
+prpack_uint64_csr
+prpack_uint32_edgelist
+prpack_uint64_edgelist
+
+prpack_packed_graph
+
+  # this is the result of 
+  # preprocessing the graph
+
+---
+
+Sample codes
+
+prpack_solver prs = pagerank_from_edgelist(graph);
+prsolve_result res = prs.autosolve_alpha(0.85);
+prsolve_result res = prs.autosolve_alpha_tol(0.85, 1e-10);
+prsolve_result res = prs.autosolve_alpha_v(0.85, prpack_vector(...));
+prpack_pagerank_parameters opts;
+// opts.alpha
+// opts.tol
+// opts.u
+// opts.v
+
+Python package
+--------------
+
+import prpack
+
+results = prpack.pagerank(edgelist=...,outlinks=...,inlinks=...,alpha=...,tol=...)
+results = prpack.pagerank_from_edgelist() # builds the graph and 
+results = prpack.pagerank_from_inlinks() # uses Gauss-Seidel
+results = prpack.pagerank_from_outlinks() # uses Gauss-Seidel on edges
+
+prs = prpack.pagerank_solver(edgelist=...,outlinks=...,inlinks=...)
+results = prs.solve(alpha=,tol=,u=,v=)
+results = prs.solve(alpha=,tol=,u=,v=prpack.uniform)
+
+results.x # the PageRank vector
+results.times.preprocess = # preprocessing time
+results.times.compute = # compute time
+results.times.postprocess = # postprocessing time
+results.r # the residual vector (if via outlinks)
+results.preprocessed # a flag indicating if we used a preprocessed graph,
+  (if the time is zero, then the graph may already have been preprocessed)
+results.parameters.alpha = # value of alpha for solve  
+results.parameters.tol = # value of alpha for solve
+  
+Matlab package
+--------------
+
+function [x,stats] = pagerank(A)...
+function [x,stats] = weighted_pagerank(varargin) ...
+  [x,stats] = pagerank(varargin{:}, 'weighted', true);
+function prs = pagerank_solver(A)
+function prs = weighted_pagerank_solver(A)
+pagerank_solve(prs, alpha=..., tol=...)
+function [x,r,stats] = sparse_pagerank(A)
+function [x,r,stats] = sparse_weighted_pagerank(A)
+  
+Command line interface
+----------------------
+
+  prsolve <graphfile> [options]
+    -f FORMAT , --format=FORMAT
+                     the input format if it cannot be deduced from
+                     the extension of the graph file.  valid formats
+                     are: smat, edgelist, gml, ...
+                     
+                    
+    -a FLOAT, --alpha=FLOAT
+    -t FLOAT, --tolerance=FLOAT, --tol=FLOAT
+    
+    -o FILE, --output=FILE
+    
