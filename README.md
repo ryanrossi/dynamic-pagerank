@@ -1,7 +1,3 @@
----
-title: "A Dynamical System for PageRank with Time-Dependent Teleportation"
-layout: project
----
 
 A Dynamical System for PageRank with Time-Dependent Teleportation
 ==================================
