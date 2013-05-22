@@ -94,6 +94,14 @@ else
     options.x0 = v(:,1); 
 end
 
+% fix dangling vertices
+out_deg = A*ones(size(A,1));
+d_verts = find(out_deg == 0);
+if (isempty(d_verts)) 
+    A = A + dangling(d)*ones(1,n)/n;
+end
+
+assert(isempty( find( A*ones(size(A,1)) == 0 ) ));
 
 % normalize the matrix
 P = normout(A);

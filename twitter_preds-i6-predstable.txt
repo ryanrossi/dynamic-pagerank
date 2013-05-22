@@ -1,0 +1,10 @@
+\begin{table}
+\caption{Average SMAPE over all nodes for the two models (lower is better).}
+\label{table:pv-preds}
+\centering\scriptsize
+\begin{tabularx}{\linewidth}{ ll rXXXX}
+\toprule
+\textbf{{Dataset}} & \textbf{Type} & $\theta$ & \multicolumn{4}{l}{\textbf{Error Ratio}} \\
+ &  &  & $s$ (timescale)& & & \\
+ &  &  & \textbf{1} & \textbf{2} & \textbf{6} & $\mathbf{\infty}$ \\
+\midrule
