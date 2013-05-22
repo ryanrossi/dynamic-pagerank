@@ -17,7 +17,7 @@ if nargin == 0, data = 'graphs'; end;
 if nargin < 2, 
     fn = ''; 
 end
-idx = 1000; str = '';
+idx = 1000; str = ''; % idx for stationary preds, should be last k
 graphlist = get_graphlist(data);
 
 name = graphlist{1,1};
@@ -66,7 +66,7 @@ toc
 
 m        = graphlist{1,7}; 
 blocks   = graphlist{1,8};
-n = (m*blocks)+m;
+n = (m*blocks)%+m;
 
 if nargin > 1,
    str = fn;
