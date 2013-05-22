@@ -72,6 +72,9 @@ if nargin > 1,
    str = fn;
 end
 
+idx
+n
+
 v_st = v(rank(idx:(idx+1)+n),:);
 v_ns = v(rank(1:n),:);
     
