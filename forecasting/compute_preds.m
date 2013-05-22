@@ -17,7 +17,7 @@ if nargin == 0, data = 'graphs'; end;
 if nargin < 2, 
     fn = ''; 
 end
-idx = 50000; str = '';
+idx = 1000; str = '';
 graphlist = get_graphlist(data);
 
 name = graphlist{1,1};
