@@ -94,6 +94,8 @@ else
     options.x0 = v(:,1); 
 end
 
+nnz(A)
+
 % fix dangling vertices
 %out_deg = A*ones(size(A,1));
 out_deg = sum(A,2)';   % outdegree = row sum of A
@@ -103,9 +105,16 @@ if (~isempty(d_verts)) % check if G has at least one dangling vertex
     fprintf('found dangling vertices, patching them\n');
     d = zeros(n,1); % dangling indicator vector
     d(d_verts) = 1;
-    A = A + d*ones(1,n)/n;
+    
+    Pbar = normout(A)
+    P = Pbar + d*ones(1,n)/n;
+
+
+    A = sparse(A + d*ones(1,n)/n);
     toc
 end
+
+nnz(A)
 
 %out_degree = sum(A,2)';
 %assert(length(find(out_degree == 0)) == 0)

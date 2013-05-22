@@ -32,7 +32,11 @@ ls data/
 % Dynamic PageRank
 %--------------------------------------
 
+run_twitter_smoothing
 
+run_twitter_timescales
+
+preds
 
 
 
