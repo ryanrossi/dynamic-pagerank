@@ -6,6 +6,5 @@ addpath(fullfile(mypath,'causality'));
 addpath(fullfile(mypath,'clustering'));
 addpath(genpath(fullfile(mypath,'forecasting')));
 addpath(fullfile(mypath,'forecasting'));
-addpath(fullfile(mypath,'experiments'));
 addpath(fullfile(mypath,'data'));
 addpath(genpath(fullfile(mypath,'util')));

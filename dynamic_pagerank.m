@@ -95,13 +95,20 @@ else
 end
 
 % fix dangling vertices
-out_deg = A*ones(size(A,1));
-d_verts = find(out_deg == 0);
-if (isempty(d_verts)) 
-    A = A + dangling(d)*ones(1,n)/n;
+%out_deg = A*ones(size(A,1));
+out_deg = sum(A,2)';   % outdegree = row sum of A
+d_verts = find(out_deg == 0); % dangling vertex ids
+if (~isempty(d_verts)) % check if G has at least one dangling vertex
+    tic
+    fprintf('found dangling vertices, patching them\n');
+    d = zeros(n,1); % dangling indicator vector
+    d(d_verts) = 1;
+    A = A + d*ones(1,n)/n;
+    toc
 end
 
-assert(isempty( find( A*ones(size(A,1)) == 0 ) ));
+%out_degree = sum(A,2)';
+%assert(length(find(out_degree == 0)) == 0)
 
 % normalize the matrix
 P = normout(A);
