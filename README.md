@@ -42,7 +42,7 @@ Overview
 
 The package is organized by directory
 
-`/`  
+`/`
 : All of the main matlab codes (dynamic_pagerank.m,...)
 
 `ranking`
