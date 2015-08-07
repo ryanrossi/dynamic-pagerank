@@ -4,9 +4,11 @@ A Dynamical System for PageRank with Time-Dependent Teleportation
 
 In short, a library for computing dynamic pagerank. See [1] and [2] for further details.
 
-[1]	Ryan Rossi and David Gleich: [Dynamic PageRank using Evolving Teleportation](http://www.ryanrossi.com/papers/rossi-gleich-dynamic-pagerank.pdf), Algorithms and Models for the Web Graph, volume 7323 of Lecture Notes in Computer Science, pages 126-137. Springer, 2012.
+[1]	Ryan Rossi and David Gleich: [Dynamic PageRank using Evolving Teleportation](http://www.ryanrossi.com/papers/rossi-gleich-dynamic-pagerank.pdf), 
+	Algorithms and Models for the Web Graph, vol. 7323 of LNCS, pages 126-137. Springer, 2012.
 
-[2]	David F. Gleich, Ryan A. Rossi, [A Dynamical System for PageRank with Time-Dependent Teleportation](http://ryanrossi.com/papers/dynamic-pagerank.pdf), Internet Mathematics, 10:1-2, 188-217, 2014.
+[2]	David F. Gleich, Ryan A. Rossi, [A Dynamical System for PageRank with Time-Dependent Teleportation](http://ryanrossi.com/papers/dynamic-pagerank.pdf), 
+	Internet Mathematics, 10:1-2, 188-217, 2014.
 
 _These codes are research prototypes and may not work for you. No promises. But do email if you run into problems._
 
