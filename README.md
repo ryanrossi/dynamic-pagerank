@@ -12,8 +12,7 @@ Download
 --------
 * [dynamic_pagerank.zip](https://www.cs.purdue.edu/homes/dgleich/codes/dynsyspr-im/dynamic_pagerank.zip) 
 
-#### data
-___Unzip into dynamic_pagerank directory___
+___Unzip data into dynamic_pagerank directory___
 * [dynamic-pr-data.zip](http://ryanrossi.com/dynamic_pagerank/dynamic-pr-data.zip)
 * [dynamic-pr-data.7z](http://ryanrossi.com/dynamic_pagerank/dynamic-pr-data.7z) 
 
