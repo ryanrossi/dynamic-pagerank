@@ -22,7 +22,7 @@ ___Unzip data into dynamic_pagerank directory___
 Setup
 -----
 
-Start matlab in the directory where you unzipped the dynamic_pr.tar.gz file
+Start matlab in the directory where you unzipped the `dynamic_pagerank.zip` file
 
     $ matlab
     >> setup_paths
