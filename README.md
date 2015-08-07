@@ -10,10 +10,12 @@ _These codes are research prototypes and may not work for you. No promises. But 
 
 Download
 --------
-
 * [dynamic_pagerank.zip](https://www.cs.purdue.edu/homes/dgleich/codes/dynsyspr-im/dynamic_pagerank.zip) 
-* [dynamic-pr-data.zip](http://ryanrossi.com/dynamic_pagerank/dynamic-pr-data.zip), [dynamic-pr-data.7z](http://ryanrossi.com/dynamic_pagerank/dynamic-pr-data.7z) ___unzip into dynamic_pagerank directory___
-{: .nobullets}
+
+#### data
+___Unzip into dynamic_pagerank directory___
+* [dynamic-pr-data.zip](http://ryanrossi.com/dynamic_pagerank/dynamic-pr-data.zip)
+* [dynamic-pr-data.7z](http://ryanrossi.com/dynamic_pagerank/dynamic-pr-data.7z) 
 
 
 
